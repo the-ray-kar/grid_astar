@@ -6,6 +6,7 @@ Usage
 import numpy as np
 from c_astar import astar
 import matplotlib.pyplot as plt
+
 #create obstacle map
 state_low = np.array([0,0])
 state_high = np.array([100,100])
@@ -14,14 +15,15 @@ goal_state = state_high.copy()
 actions = [np.array([0,1]),np.array([1,1]),np.array([1,0]),np.array([-1,1]),np.array([-1,0]),np.array([-1,-1]),np.array([0,-1]),np.array([1,-1])] #list of actions
 step_cost = np.array([1, 1.41, 1, 1.41, 1, 1.41, 1, 1.41])
 
-mapp = np.zeros((101,101)) #create map as 2d array. And obstacles aswell.
+#create map as 2d array. And obstacles aswell.
+mapp = np.zeros((101,101)) 
 mapp[20:40,20:40] = 1
 mapp[20:40,60:80] = 1
 mapp[60:80,20:40] = 1
 mapp[50:70,50:80]=1
 mapp[80:100,70:90]=1
 
-#append obstacle points for plottinf
+#append obstacle points for plotting
 xo = []
 yo = []
 for i in range(100):
@@ -36,6 +38,7 @@ plt.show()
 ```
 
 ![image](https://user-images.githubusercontent.com/70949901/132097970-4592a087-64e9-4f54-91db-2b6b9bc7e262.png)
+
 ```python
 #define required user custom functions for planning
 def get_next(state,action):
