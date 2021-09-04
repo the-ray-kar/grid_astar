@@ -6,8 +6,9 @@ Usage
 import numpy as np
 from c_astar import astar
 import matplotlib.pyplot as plt
-
-#create obstacle map
+```
+Define states, state boundaries, start, goal, action list, step cost per action
+```python
 state_low = np.array([0,0])
 state_high = np.array([100,100])
 start_state = state_low.copy()
@@ -15,7 +16,9 @@ goal_state = state_high.copy()
 actions = [np.array([0,1]),np.array([1,1]),np.array([1,0]),np.array([-1,1]),np.array([-1,0]),np.array([-1,-1]),np.array([0,-1]),np.array([1,-1])] #list of actions
 step_cost = np.array([1, 1.41, 1, 1.41, 1, 1.41, 1, 1.41])
 
-#create map as 2d array. And obstacles aswell.
+```
+create map as 2d array. And obstacles aswell.
+```python
 mapp = np.zeros((101,101)) 
 mapp[20:40,20:40] = 1
 mapp[20:40,60:80] = 1
@@ -39,8 +42,10 @@ plt.show()
 
 ![image](https://user-images.githubusercontent.com/70949901/132097970-4592a087-64e9-4f54-91db-2b6b9bc7e262.png)
 
+Define required user custom functions for planning include motion primitive,
+collision detection, heuristic computation, state transition, goal condition.
+
 ```python
-#define required user custom functions for planning
 def get_next(state,action):
     next_state = state + action
     return next_state
@@ -67,7 +72,10 @@ def goal_condition(state:np.ndarray):
     global goal_state
     return (state==goal_state).all()
 
-#Initialise the planner by providing the user defined functions and other required attributes
+```
+
+Initialise the planner by providing the user defined functions and other required attributes
+```python
 planner = astar(start_state=start_state,goal_state=goal_state,get_next_state=get_next,compute_heuristic=compute_heuristic,
                 detect_collision=detect_collision,state_low=state_low,state_high=state_high,action_list=actions,
                 step_cost=tep_cost,dis_buckets=[101,101],goal_condition=goal_condition)   
