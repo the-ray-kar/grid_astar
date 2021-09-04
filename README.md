@@ -63,8 +63,8 @@ def goal_condition(state:np.ndarray):
     return (state==goal_state).all()
 
 #Initialise the planner by providing the user defined functions and other required attributes
-planner = astar(start_state,goal_state,get_next,compute_heuristic,
-                detect_collision,state_low,state_high,actions,step_cost,dis_buckets=[101,101],goal_condition=goal_condition)   
+planner = astar(start_state=start_state,goal_state=goal_state,get_next_state=get_next,compute_heuristic=compute_heuristic,
+                detect_collision=detect_collision,state_low=state_low,state_high=state_high,action_list=actions,step_cost=tep_cost,dis_buckets=[101,101],goal_condition=goal_condition)   
 
 way_points,final_node = planner.compute_shortest_path() #get the shortest path
 
