@@ -33,8 +33,10 @@ plt.xlim([0,101])
 plt.ylim([0,101])
 plt.scatter(xo,yo)
 plt.show()
-![image](https://user-images.githubusercontent.com/70949901/132097970-4592a087-64e9-4f54-91db-2b6b9bc7e262.png)
+```
 
+![image](https://user-images.githubusercontent.com/70949901/132097970-4592a087-64e9-4f54-91db-2b6b9bc7e262.png)
+```python
 #define required user custom functions for planning
 def get_next(state,action):
     next_state = state + action
@@ -64,7 +66,8 @@ def goal_condition(state:np.ndarray):
 
 #Initialise the planner by providing the user defined functions and other required attributes
 planner = astar(start_state=start_state,goal_state=goal_state,get_next_state=get_next,compute_heuristic=compute_heuristic,
-                detect_collision=detect_collision,state_low=state_low,state_high=state_high,action_list=actions,step_cost=tep_cost,dis_buckets=[101,101],goal_condition=goal_condition)   
+                detect_collision=detect_collision,state_low=state_low,state_high=state_high,action_list=actions,
+                step_cost=tep_cost,dis_buckets=[101,101],goal_condition=goal_condition)   
 
 way_points,final_node = planner.compute_shortest_path() #get the shortest path
 
@@ -73,8 +76,8 @@ points = np.array(p)
 plt.scatter(points[:,0],points[:,1])
 plt.scatter(xo,yo)
 plt.show()
-
+```
 ![image](https://user-images.githubusercontent.com/70949901/132098087-007039e1-31ee-41ee-8e08-e154a83cc28d.png)
 
 
-```
+
