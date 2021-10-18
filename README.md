@@ -83,7 +83,7 @@ planner = astar(start_state=start_state,goal_state=goal_state,get_next_state=get
 way_points,final_node = planner.compute_shortest_path() #get the shortest path
 
 #plot the path
-points = np.array(p)
+points = np.array(way_points)
 plt.scatter(points[:,0],points[:,1])
 plt.scatter(xo,yo)
 plt.show()
